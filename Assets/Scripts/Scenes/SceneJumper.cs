@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System;
 
 public class SceneJumper : MonoBehaviour
 {
-    public void GoToGameScene()
+    public void GoTo(String scene)
     {
-        //TODO - Constant in here instead of string. 
-        SceneManager.LoadScene("GameLevel", LoadSceneMode.Single);
-    }
-    public void GoToMenu()
-    {
-        //TODO - Constant in here instead of string. 
-        SceneManager.LoadScene("GameMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
