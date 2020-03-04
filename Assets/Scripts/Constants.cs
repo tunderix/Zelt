@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-static class Constants
+//
+// use these elsewhere like: 
+// Constants.Scene.temp
+
+public static class Constants
 {
-    static class Scene
+    public static class Scene
     {
-        public const string Pi = 3.14159;
+        // -- Just an example here! :) --
+        public const string temp = "";
     }
 }
