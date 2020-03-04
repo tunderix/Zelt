@@ -48,6 +48,7 @@ public class PlatformerMovement : MonoBehaviour
 
     // Variables
     private Rigidbody rb;
+    private Rigidbody2D rb2d;
     public Movement movement;
     public Jumping jumping;
     Vector2 moveVelocity;
@@ -56,7 +57,8 @@ public class PlatformerMovement : MonoBehaviour
     public bool canControl = true;
 
     private void Start()
-    {
+    {   
+        
         rb = GetComponent<Rigidbody>();
         moveVelocity = new Vector2(0, 0);
         jumping = new Jumping();
@@ -134,6 +136,7 @@ public class PlatformerMovement : MonoBehaviour
         get { return rb.velocity.y + moveVelocity.y; }
     }
 
+   
     //
     // Collisions
     //
