@@ -47,3 +47,6 @@ TagManager:
   - name: Front
     uniqueID: 3734520651
     locked: 0
+  - name: Pelaaja
+    uniqueID: 292614355
+    locked: 0
