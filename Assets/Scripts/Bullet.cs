@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    //panoksen nopeus
+    public float speed = 20f;
+    //Panoksen vahinko
+    public int damage = 40;
 
-    public float speed = 5f;
     public Rigidbody2D rb;
+
+    public GameObject impactEffect;
     // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.right * speed;
     }
+
+
+    void OnTriggerEnter2D(Collider2D hitInfo) 
+    {
+        Enemy enemy = hitInfo.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
+
+        Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+    
 
    
 }

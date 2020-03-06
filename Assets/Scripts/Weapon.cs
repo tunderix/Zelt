@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     
     public Transform firePoint;
-    public GameObject BulletPreFab;
+    public GameObject bulletPreFab;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +20,6 @@ public class Weapon : MonoBehaviour
     void Shoot ()
     {
         //Tänne kaikki Shoot-logiikat.
-        Instantiate(BulletPreFab, firePoint.position, firePoint.rotation);
+        Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
     }
 }

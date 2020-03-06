@@ -44,8 +44,8 @@ TagManager:
   - name: Background
     uniqueID: 3175634023
     locked: 0
-  - name: Front
-    uniqueID: 3734520651
+  - name: Foreground
+    uniqueID: 3826105923
     locked: 0
   - name: Pelaaja
     uniqueID: 292614355
