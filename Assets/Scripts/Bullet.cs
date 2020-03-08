@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     //panoksen nopeus
     public float speed = 20f;
     //Panoksen vahinko
-    public int damage = 40;
+    [SerializeField]
+    private int damage = 10;
 
     public Rigidbody2D rb;
 
@@ -21,16 +22,19 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo) 
     {
+       
+
         Enemy enemy = hitInfo.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+             enemy.TakeDamage(damage);
         }
 
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
     
+    // GameObject.FindGameObjectWithTag("EnemyFrog").GetComponent<Animation>().Play("Tongue");  -> Esimerkki, miten animaatio liitetään kiinni tapahtumaan.
 
    
 }

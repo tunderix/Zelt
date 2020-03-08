@@ -27,11 +27,11 @@ public class PlatformerMovement : MonoBehaviour
     [System.Serializable]
     public class Jumping
     {
-        public float strength = 14f;
+        public float strength = 6f;
         public bool isGrounded = false;
         public bool doubleJumping = false;
         public bool canDoubleJump = false;
-        public float doubleJumpStrength = 1.0f;
+        public float doubleJumpStrength = 0.2f;
 
         // Last time the jump button was clicked down
         [System.NonSerialized]
@@ -121,7 +121,7 @@ public class PlatformerMovement : MonoBehaviour
     // Z = Horizontal
     void ApplyMovement()
     {
-        Vector3 movementVector = new Vector3(0, jumpVelocity, horizontalVelocity);
+        Vector3 movementVector = new Vector3(horizontalVelocity, jumpVelocity, 0 );
         rb.velocity = movementVector;
     }
 
