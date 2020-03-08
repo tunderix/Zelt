@@ -16,7 +16,7 @@ public class PlatformerMovement : MonoBehaviour
     public class Movement
     {
         public bool isMoving = false;
-        public float walkSpeed = 8.0f;
+        public float walkSpeed = 80.0f;
         public float runSpeed = 14.0f;
         public float rotationSpeed = 1.5f;
         public float acceleration = 1.5f;
