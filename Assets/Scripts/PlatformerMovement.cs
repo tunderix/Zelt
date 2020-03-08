@@ -57,9 +57,9 @@ public class PlatformerMovement : MonoBehaviour
     public bool canControl = true;
 
     private void Start()
-    {   
-        
-        rb = GetComponent<Rigidbody>();
+    {
+
+        rb = GetComponent<Player>().PlayerRigidbody;
         moveVelocity = new Vector2(0, 0);
         jumping = new Jumping();
         movement = new Movement();
@@ -121,7 +121,7 @@ public class PlatformerMovement : MonoBehaviour
     // Z = Horizontal
     void ApplyMovement()
     {
-        Vector3 movementVector = new Vector3(0, jumpVelocity, horizontalVelocity);
+        Vector3 movementVector = new Vector3(horizontalVelocity, jumpVelocity, 0);
         rb.velocity = movementVector;
     }
 
@@ -136,7 +136,7 @@ public class PlatformerMovement : MonoBehaviour
         get { return rb.velocity.y + moveVelocity.y; }
     }
 
-   
+
     //
     // Collisions
     //
