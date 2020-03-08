@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: f0d3115da605c52439c4a92826a9c605
+guid: 1129cf647fbafc7459afb91590a06442
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7862517587969401478
-    second: Maapaloja_0
-  - first:
-      213: -5073167099907009588
-    second: Maapaloja_1
-  - first:
-      213: 469195410717683829
-    second: Maapaloja_2
-  - first:
-      213: -2237347756678027685
-    second: Maapaloja_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -52,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,91 +96,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Maapaloja_0
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 295
-        width: 474
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6826d2fb6164d1d60800000000000000
-      internalID: 7862517587969401478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Maapaloja_1
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 414
-        width: 475
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc318d3c66d7899b0800000000000000
-      internalID: -5073167099907009588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Maapaloja_2
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 484
-        width: 475
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 570321a7dbae28600800000000000000
-      internalID: 469195410717683829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Maapaloja_3
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 523
-        width: 473
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b56603cb11853f0e0800000000000000
-      internalID: -2237347756678027685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
