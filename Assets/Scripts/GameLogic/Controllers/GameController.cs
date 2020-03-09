@@ -21,6 +21,10 @@ public class GameController : ZeltBehaviour
         this.inputController = new InputController();
         Debug.Log("Game Controller Initialized!\n----------------------------");
 
+    }
+
+    private void Start()
+    {
         StartGame();
     }
 
