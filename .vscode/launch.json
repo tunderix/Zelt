@@ -7,7 +7,6 @@
         {
             "name": "Unity Editor",
             "type": "unity",
-            "path": "/d:/Games/Showerducky/ProjectZelt/ProjectZelt/Library/EditorInstance.json",
             "request": "launch"
         },
         {
