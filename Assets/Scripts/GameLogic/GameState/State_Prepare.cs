@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class State_Prepare : IState
 {
+    private StartPreparation prepa;
 
-    public State_Prepare() { }
+    public State_Prepare(StartPreparation prep)
+    {
+        prepa = prep;
+    }
 
     public void Enter()
     {
         Debug.Log("STATE PREPAREGAME - ENTER");
+        this.prepa(1);
     }
 
     public void Execute()

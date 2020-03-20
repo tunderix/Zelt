@@ -15,20 +15,20 @@ public class GameController : ZeltBehaviour
     [SerializeField]
     private GameObject playerPrefab;
 
-    private GameStateMachine gsm;
+    private GameLogic gameLogic;
 
     private void Awake()
     {
         this.environmentController = new EnvironmentController(this.playerPrefab);
         this.inputController = new InputController();
-        this.gsm = new GameStateMachine();
+        this.gameLogic = new GameLogic();
         Debug.Log("Game Controller Initialized!\n----------------------------");
 
     }
 
     private void Start()
     {
-        gsm.ChangeState(new State_Prepare());
+        this.gameLogic.Prepare();
         StartGame();
     }
 
@@ -36,14 +36,14 @@ public class GameController : ZeltBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            gsm.ChangeState(new State_Play());
+            this.gameLogic.Play();
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
-            gsm.ChangeState(new State_EndGame());
+            this.gameLogic.End();
         }
 
-        gsm.Update();
+        this.gameLogic.Excecute();
     }
 
     private void StartGame()
