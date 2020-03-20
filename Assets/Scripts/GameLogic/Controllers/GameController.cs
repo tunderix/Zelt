@@ -15,17 +15,33 @@ public class GameController : ZeltBehaviour
     [SerializeField]
     private GameObject playerPrefab;
 
+    private GameStateMachine gsm;
+
     private void Awake()
     {
         this.environmentController = new EnvironmentController(this.playerPrefab);
         this.inputController = new InputController();
+        this.gsm = new GameStateMachine();
         Debug.Log("Game Controller Initialized!\n----------------------------");
 
     }
 
     private void Start()
     {
+        gsm.ChangeState(new State_Prepare());
         StartGame();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            gsm.ChangeState(new State_Play());
+        }
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            gsm.ChangeState(new State_EndGame());
+        }
     }
 
     private void StartGame()
