@@ -6,6 +6,7 @@ public class GameController : ZeltBehaviour
 {
     private InputController inputController;
     private EnvironmentController environmentController;
+    private AudioController audioController;
 
     [Tooltip("Determine where the player spawns by giving quad object")]
     [SerializeField]
@@ -19,6 +20,7 @@ public class GameController : ZeltBehaviour
     {
         this.environmentController = new EnvironmentController(this.playerPrefab);
         this.inputController = new InputController();
+        this.audioController = new AudioController();
         Debug.Log("Game Controller Initialized!\n----------------------------");
 
     }
@@ -43,6 +45,13 @@ public class GameController : ZeltBehaviour
     }
 
     // TODO - Sound Controller
+    public AudioController AudioController
+    {
+        get
+        {
+            return this.audioController;
+        }
+    }
 
     // TODO - Storage Controller
 
