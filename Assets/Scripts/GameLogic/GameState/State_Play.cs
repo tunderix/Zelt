@@ -14,7 +14,7 @@ public class State_Play : IState
 
     public void Execute()
     {
-        Debug.Log("STATE PLAYGAME - UPDATE");
+
     }
 
     public void Exit()

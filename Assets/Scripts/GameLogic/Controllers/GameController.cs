@@ -42,6 +42,8 @@ public class GameController : ZeltBehaviour
         {
             gsm.ChangeState(new State_EndGame());
         }
+
+        gsm.Update();
     }
 
     private void StartGame()

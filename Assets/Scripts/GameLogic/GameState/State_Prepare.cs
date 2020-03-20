@@ -15,7 +15,7 @@ public class State_Prepare : IState
 
     public void Execute()
     {
-        Debug.Log("STATE PREPAREGAME - UPDATE");
+
     }
 
     public void Exit()

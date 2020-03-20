@@ -14,7 +14,7 @@ public class State_EndGame : IState
 
     public void Execute()
     {
-        Debug.Log("STATE ENDGAME - UPDATE");
+
     }
 
     public void Exit()
