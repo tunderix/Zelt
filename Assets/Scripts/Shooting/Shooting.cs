@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Shooting : ZeltBehaviour
+
 {
-    
+        
     public Transform firePoint;
     public GameObject BulletPreFab;
 

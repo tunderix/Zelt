@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlatformerMovement : MonoBehaviour
+public class PlatformerMovement : ZeltBehaviour
 {
 
     // Used for dashing and moving.

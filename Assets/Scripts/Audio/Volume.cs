@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
-public class Volume : MonoBehaviour
+public class Volume : ZeltBehaviour
 {
     public AudioMixer audioMixer;
 

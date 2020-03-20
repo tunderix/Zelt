@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
+﻿using UnityEngine.SceneManagement;
 using System;
 
-public class SceneJumper : MonoBehaviour
+public class SceneJumper : ZeltBehaviour
 {
     public void GoTo(String scene)
     {
