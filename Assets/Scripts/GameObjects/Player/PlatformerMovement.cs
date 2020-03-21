@@ -1,26 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Player), typeof(PlayerInputs))]
 public class PlatformerMovement : ZeltBehaviour
 {
-
-    // Used for dashing and moving.
-    public enum HorizontalDirection
-    {
-        None,
-        Right,
-        Left
-    }
 
     // Holds all the movement variables
     [System.Serializable]
     public class Movement
     {
-        public bool isMoving = false;
-        public float walkSpeed = 80.0f;
-        public float runSpeed = 14.0f;
-        public float rotationSpeed = 1.5f;
-        public float acceleration = 1.5f;
+        public float moveSpeed = 80.0f;
         public InputDirection lastInputDirection = InputDirection.None;
     }
 
@@ -67,40 +55,44 @@ public class PlatformerMovement : ZeltBehaviour
 
     private void Update()
     {
-        moveVelocity.x = 0f;
-        moveVelocity.y = -0.1f;
-
-        // Horizontal movement
-        moveVelocity.x = keyDown == InputDirection.Right ? movement.walkSpeed : moveVelocity.x;
-        moveVelocity.x = keyDown == InputDirection.Left ? -movement.walkSpeed : moveVelocity.x;
-
-        if (leftKeyUp && movement.lastInputDirection == InputDirection.Left)
-        {
-            Dash();
-        }
-        if (rightKeyUp && movement.lastInputDirection == InputDirection.Right)
-        {
-            Dash();
-        }
-        if (keyUp == InputDirection.Right || keyUp == InputDirection.Left)
-        {
-            movement.lastInputDirection = keyUp;
-        }
+        ResetVelocity();
+        UpdateHorizontalVelocity();
+        UpdateLastInput();
 
         // Vertical Movement
-        if (isJumpKeyDown && isGrounded)
+        /*if (PI.isJumpKeyDown && player.isGrounded)
             Jump();
-        else if (isJumpKeyDown && jumping.canDoubleJump)
+        else if (PI.isJumpKeyDown && jumping.canDoubleJump)
             Jump();
-
-
+*/
         ApplyMovement();
+    }
+
+    private void ResetVelocity()
+    {
+        moveVelocity.x = 0f;
+        moveVelocity.y = -0.1f;
+    }
+
+    private void UpdateLastInput()
+    {
+        if (PI.keyUp == InputDirection.Right || PI.keyUp == InputDirection.Left)
+        {
+            movement.lastInputDirection = PI.keyUp;
+        }
+    }
+
+    private void UpdateHorizontalVelocity()
+    {
+        // Horizontal movement
+        moveVelocity.x = PI.keyDown == InputDirection.Right ? movement.moveSpeed : moveVelocity.x;
+        moveVelocity.x = PI.keyDown == InputDirection.Left ? -movement.moveSpeed : moveVelocity.x;
     }
 
     private void Jump()
     {
         //Double jumping
-        if (!isGrounded)
+        if (!player.isGrounded)
         {
             jumping.doubleJumping = true;
             jumping.canDoubleJump = false;
@@ -109,18 +101,12 @@ public class PlatformerMovement : ZeltBehaviour
         moveVelocity.y += jumping.doubleJumping ? jumping.strength + jumping.doubleJumpStrength : jumping.strength;
     }
 
-    private void Dash()
-    {
-        // TODO - Uncontrollable? dash somehow? 
-        moveVelocity.x += horizontalVelocity + movement.runSpeed;
-    }
-
     // X axis is disabled//locked, Only update movement in terms of Y and Z
     // Y = Vertical
     // Z = Horizontal
     void ApplyMovement()
     {
-        Vector3 movementVector = new Vector3(horizontalVelocity, jumpVelocity, 0);
+        Vector3 movementVector = new Vector3(horizontalVelocity, rb.velocity.y, 0);
         rb.velocity = movementVector;
     }
 
@@ -146,76 +132,20 @@ public class PlatformerMovement : ZeltBehaviour
         jumping.doubleJumping = false;
     }
 
-    private bool isGrounded
+    // HELPERS
+    private PlayerInputs PI
     {
         get
         {
-            return GetComponent<Player>().isGrounded;
+            return GetComponent<PlayerInputs>();
         }
     }
 
-    //
-    // Input Detection
-    //
-    public enum InputDirection
-    {
-        None,
-        Left,
-        Right
-    }
-
-    public InputDirection keyDown
+    private Player player
     {
         get
         {
-            if (rightKeyDown)
-                return InputDirection.Right;
-            if (leftKeyDown)
-                return InputDirection.Left;
-            return InputDirection.None;
-        }
-    }
-
-    InputDirection keyUp
-    {
-        get
-        {
-            if (rightKeyUp)
-                return InputDirection.Right;
-            if (leftKeyUp)
-                return InputDirection.Left;
-            return InputDirection.None;
-        }
-    }
-
-    bool isJumpKeyDown
-    {
-        get { return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W); }
-    }
-
-    bool leftKeyDown
-    {
-        get { return Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A); }
-    }
-
-    bool rightKeyDown
-    {
-        get
-        {
-            return Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        }
-    }
-
-    bool leftKeyUp
-    {
-        get { return Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A); }
-    }
-
-    bool rightKeyUp
-    {
-        get
-        {
-            return Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
+            return GetComponent<Player>();
         }
     }
 }

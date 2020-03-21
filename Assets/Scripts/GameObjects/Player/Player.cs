@@ -1,28 +1,41 @@
 ﻿using UnityEngine;
 public class Player : ZeltBehaviour
 {
-    bool m_HitDetect;
+    //Internal boolean for touching ground
+    [SerializeField]
+    private bool boxCast;
 
     [SerializeField]
-    private Collider m_Collider;
+    private Collider jumpTrigger;
 
+    // Variable to store the jumpTrigger hit
     RaycastHit m_Hit;
-
-    [SerializeField]
-    private float m_MaxDistance;
-
-    private bool touchingGround;
 
     private void FixedUpdate()
     {
-        m_HitDetect = Physics.BoxCast(m_Collider.bounds.center, m_Collider.bounds.size, Vector3.down, out m_Hit, transform.rotation, 1.0f);
+        Physics.BoxCast(jumpTrigger.bounds.center, jumpTrigger.bounds.size, Vector3.down, out m_Hit, transform.rotation, 1.0f);
+        if (m_Hit.collider != null)
+        {
+            boxCast = true;
+        }
+        else
+        {
+            boxCast = false;
+        }
     }
 
+    //Just for debugging if player is touching ground
     private void OnDrawGizmos()
     {
-        Gizmos.color = m_HitDetect ? Color.green : Color.red;
-        Gizmos.DrawWireCube(m_Collider.bounds.center, m_Collider.bounds.size);
+        //Draw the jump trigger as green or red depending on trigger
+        Gizmos.color = boxCast ? Color.red : Color.blue;
+        Gizmos.DrawWireCube(jumpTrigger.bounds.center, jumpTrigger.bounds.size);
     }
+
+
+    //
+    // PUBLIC HOOKS
+    //
 
     public Rigidbody PlayerRigidbody
     {
@@ -36,7 +49,7 @@ public class Player : ZeltBehaviour
     {
         get
         {
-            return m_HitDetect;
+            return boxCast;
         }
     }
 }
