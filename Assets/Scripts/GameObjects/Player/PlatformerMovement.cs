@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class PlatformerMovement : ZeltBehaviour
 {
 
@@ -27,8 +28,7 @@ public class PlatformerMovement : ZeltBehaviour
     [System.Serializable]
     public class Jumping
     {
-        public float strength = 6f;
-        public bool isGrounded = false;
+        public float strength = 50f;
         public bool doubleJumping = false;
         public bool canDoubleJump = false;
         public float doubleJumpStrength = 0.2f;
@@ -88,7 +88,7 @@ public class PlatformerMovement : ZeltBehaviour
         }
 
         // Vertical Movement
-        if (isJumpKeyDown && jumping.isGrounded)
+        if (isJumpKeyDown && isGrounded)
             Jump();
         else if (isJumpKeyDown && jumping.canDoubleJump)
             Jump();
@@ -100,13 +100,12 @@ public class PlatformerMovement : ZeltBehaviour
     private void Jump()
     {
         //Double jumping
-        if (!jumping.isGrounded)
+        if (!isGrounded)
         {
             jumping.doubleJumping = true;
             jumping.canDoubleJump = false;
         }
 
-        jumping.isGrounded = false;
         moveVelocity.y += jumping.doubleJumping ? jumping.strength + jumping.doubleJumpStrength : jumping.strength;
     }
 
@@ -143,10 +142,16 @@ public class PlatformerMovement : ZeltBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        //TODO - Tagging against collider? 
-        jumping.isGrounded = true;
         jumping.canDoubleJump = true;
         jumping.doubleJumping = false;
+    }
+
+    private bool isGrounded
+    {
+        get
+        {
+            return GetComponent<Player>().isGrounded;
+        }
     }
 
     //
