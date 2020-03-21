@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_EndGame : IState
+public class State_EndGame : GameState
 {
 
     public State_EndGame() { }
 
-    public void Enter()
+    public override bool OnExcecute()
     {
-        Debug.Log("STATE ENDGAME - ENTER");
-    }
-
-    public void Execute()
-    {
-
-    }
-
-    public void Exit()
-    {
-        Debug.Log("STATE ENDGAME - END");
+        return true;
     }
 }

@@ -1,25 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class State_Play : IState
+public class State_Play : GameState
 {
-
-    public State_Play() { }
-
-    public void Enter()
+    public override bool OnExcecute()
     {
-        Debug.Log("STATE PLAYGAME - ENTER");
-    }
-
-    public void Execute()
-    {
-
-    }
-
-    public void Exit()
-    {
-        Debug.Log("STATE PLAYGAME - END");
+        return true;
     }
 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class State_Prepare : IState
+public class State_Prepare : GameState
 {
     private StartPreparation prepa;
 
@@ -12,20 +12,16 @@ public class State_Prepare : IState
         prepa = prep;
     }
 
-    public void Enter()
+    public override bool OnEnter()
     {
         Debug.Log("STATE PREPAREGAME - ENTER");
         this.prepa(1);
+        return true;
     }
 
-    public void Execute()
+    public override bool OnExcecute()
     {
-
-    }
-
-    public void Exit()
-    {
-        Debug.Log("STATE PREPAREGAME - END");
+        return false;
     }
 }
 

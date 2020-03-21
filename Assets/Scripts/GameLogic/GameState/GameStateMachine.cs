@@ -1,19 +1,22 @@
 ﻿
+using UnityEngine;
+using UnityEditor;
+
 public class GameStateMachine
 {
-    IState currentState;
+    protected GameState currentState;
 
-    public void ChangeState(IState newState)
+    public void ChangeState(GameState newState)
     {
         if (currentState != null)
-            currentState.Exit();
+            currentState.OnExit();
 
         currentState = newState;
-        currentState.Enter();
+        currentState.OnEnter();
     }
 
     public void Update()
     {
-        if (currentState != null) currentState.Execute();
+        if (currentState != null) currentState.OnExcecute();
     }
 }

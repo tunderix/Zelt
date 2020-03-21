@@ -21,10 +21,12 @@ public class GameLogic
     {
         gsm.ChangeState(new State_Prepare(new StartPreparation(this.StartPrepare)));
     }
+
     public void Play()
     {
         gsm.ChangeState(new State_Play());
     }
+
     public void End()
     {
         gsm.ChangeState(new State_EndGame());
