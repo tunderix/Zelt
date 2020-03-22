@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 
+// The jumping is controlled here, 
+// The movement IS NOT APPLIED in here, but actually in PlatformerMovement.cs
+// The movement is applied as rigidbody.MovePosition()
+//
+
 [RequireComponent(typeof(Player), typeof(PlayerInputs))]
 public class JumpController : ZeltBehaviour
 {
@@ -10,7 +16,7 @@ public class JumpController : ZeltBehaviour
     [System.Serializable]
     public class JumpVar
     {
-        public float strength = 50f;
+        public float strength = 30f;
     }
 
     private JumpVar jump;
